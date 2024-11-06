@@ -8,7 +8,7 @@ export const routes: Routes = [
     // Rutas para administrador
     {path: '', redirectTo: 'admin', pathMatch: 'full'},
     {path: 'admin', component: AdministradorComponent},
-    {path: 'admin/paneladmin', component: PaneladminComponent},
+    {path: 'paneladmin', component: PaneladminComponent},
     // {path: 'admin/paneladmin/clientes', component: OperativoComponent},
     // {path: 'admin/paneladmin/productos', component: OperativoComponent},
     // {path: 'admin/paneladmin/ventas', component: OperativoComponent},
