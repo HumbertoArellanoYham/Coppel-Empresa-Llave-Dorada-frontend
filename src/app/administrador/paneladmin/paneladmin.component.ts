@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-paneladmin',
@@ -8,5 +9,19 @@ import { Component } from '@angular/core';
   styleUrl: './paneladmin.component.css'
 })
 export class PaneladminComponent {
+  constructor(private router: Router){
 
+  }
+
+  clientespage(){
+    this.router.navigate(['/paneladmin/clientes']);
+  }
+
+  productospage(){
+    this.router.navigate(['/paneladmin/productos']);
+  }
+
+  ventaspage(){
+    this.router.navigate(['/paneladmin/ventas']);
+  }
 }

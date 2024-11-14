@@ -5,8 +5,7 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './ventas.component.html',
-  styleUrl: './ventas.component.css',
-  host: {'some-binding': 'some-value'}
+  styleUrl: './ventas.component.css'
 })
 export class VentasComponent {
 

@@ -1,0 +1,39 @@
+.labelstyle {
+width: 40%;
+}
+
+.labelstylenombre {
+    width: 40%;
+}
+
+.formdetails {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; 
+}
+.tabladatos {
+    display: flex;
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Alinea el contenido verticalmente (si es necesario) */
+    width: 100%;
+}
+
+.tabladatos .container {
+    max-width: 80%; /* Ajusta el ancho máximo de la tabla */
+}
+
+
+.tabladatos th, .tabladatos td {
+    text-align: center; /* Centra el texto en celdas */
+    vertical-align: middle; /* Centra el texto verticalmente */
+    padding: 12px; /* Espaciado en celdas */
+}
+
+
+
+.tabladatos .alert-info {
+    text-align: center; /* Centra el texto en la alerta */
+    margin-top: 15px; /* Espacio superior para la alerta */
+}

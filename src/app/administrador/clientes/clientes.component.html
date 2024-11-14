@@ -1,1 +1,173 @@
-<p>clientes works!</p>
+<div class="formdetails">
+
+<form (ngSubmit)="onSubmit(clienteForm)" #clienteForm="ngForm" style="border: 1px solid #ccc; padding: 15px; border-radius: 8px; margin-top: 10px;">
+    <div class="input-group mb-1">
+        <label class="labelstyle">
+            <p class="mt-1 pt-1">Num:</p>
+        </label>
+        <input type="number" 
+        class="form-control" 
+        name="num" 
+        maxlength="10"
+        #sku="ngModel"
+        [(ngModel)]="cliente.id_cliente"
+        required>
+    </div>
+
+    <div class="input-group mb-1">
+        <label class="labelstylenombre">
+            <p class="mt-1 pt-1">Nombre:</p>
+        </label>
+        <input type="text" 
+        class="form-control mt-1" 
+        name="cliente" 
+        #name="ngModel"
+        maxlength="55"
+        [(ngModel)]="cliente.nombre"
+        required>
+    </div>
+
+    <div class="input-group mb-1">
+        <label class="labelstyle mt-1">
+            <p class="pt-1">Apellido Paterno:</p>
+        </label>
+        <input type="text" 
+        class="form-control mt-0" 
+        name="apellidopaterno" 
+        maxlength="80"
+        #apellidop="ngModel"
+        [(ngModel)]="cliente.apellidoPaterno"
+        required>
+    </div>
+    
+    <div class="input-group mb-1">
+        <label class="labelstyle mt-1">
+            <p class="pt-1">Apellido Materno:</p>
+        </label>
+        <input type="text" 
+        class="form-control mt-1" 
+        name="apellidomaterno" 
+        maxlength="80"
+        #apellidop="ngModel"
+        [(ngModel)]="cliente.apellidoMaterno"
+        required>
+
+    </div>
+
+    <div class="input-group mb-1">
+        <label class="labelstyle mt-1">
+            <p class="pt-1">Fecha nacimiento:</p>
+        </label>
+        <input type="date" 
+        class="form-control mt-1" 
+        name="fechanacimiento" 
+        maxlength="80"
+        #fechan="ngModel"
+        [(ngModel)]="cliente.fecha_nacimiento"
+        required>
+    </div>
+
+    <div class="input-group mb-1">
+        <label class="labelstyle mt-1">
+            <p class="pt-1">Domicilio:</p>
+        </label>
+        <input type="text" 
+        class="form-control mt-1" 
+        name="domicilio" 
+        maxlength="80"
+        #domicilio="ngModel"
+        [(ngModel)]="cliente.domicilio"
+        required>
+    </div>
+
+    <!-- Selectores dependientes: tipos -->
+    <div class="input-group mt-1">
+        <label class="labelstyle mt-1">
+            <p class="pt-1">Tipo cliente:</p>
+        </label>
+
+            <select class="form-select" [(ngModel)]="selectedclientstype" name="tipoclientes" required>
+                <option value="" disabled selected>Selecciona ..</option>
+                <!-- Loop through departamentos array -->
+                <option *ngFor="let tipo of tipocliente" [value]="tipo">{{tipo.des_tipoCliente}}</option>
+                <option value="otros">Otros</option>
+            </select>
+    </div>
+
+    <div class="input-group mt-1">
+        <label class="labelstyle">
+            <p class="pt-1">Historial:</p>
+        </label>
+        <input type="number"
+        class="form-control"
+        name="historial"
+        #historial="ngModel"
+        maxlength="10"
+        [(ngModel)]="cliente.historial_cliente" 
+        required>
+    </div>
+
+    <div>
+        <!-- Registrar o guardar -->
+        <button
+        type="submit"
+        class="btn btn-primary
+        mt-2 float-end">Registrar</button>
+
+        <!--  Eliminar -->
+        <button
+        type="button"
+        class="btn btn-warning
+        mt-2 float-end me-1">Actualizar</button>
+
+        <!--  Eliminar -->
+        <button
+        type="button"
+        class="btn btn-danger
+        mt-2 float-end me-1">Eliminar</button>
+
+        <button type="button" class="btn btn-secondary mt-2" (click)="clean(clienteForm)">Clean</button>
+    </div>
+    </form>
+</div>
+
+<div class="tabladatos">
+<div class="container mt-1">
+    <div class="row">
+        <div class="col w-40 p-3">
+        </div>
+        <div class="col w-40">
+            <div class="table-responsive" style="overflow-y: auto;">
+            <table class="table table-hover table-striped">
+                <thead>
+                    <tr>
+                        <th>Num</th>
+                        <th>Nombre</th>
+                        <th>Apellido Paterno</th>
+                        <th>Apellido Materno</th>
+                        <th>Fecha nacimiento</th>
+                        <th>Domicilio</th>
+                        <th>Tipo cliente</th>
+                        <th>Historial</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for(cliente of clientes; track $index){
+                    <tr>
+                        <td>{{cliente.id_cliente}}</td>
+                        <td>{{cliente.nombre}}</td>
+                        <td>{{cliente.apellidoPaterno}}</td>
+                        <td>{{cliente.apellidoMaterno}}</td>
+                        <td>{{cliente.fecha_nacimiento}}</td>
+                        <td>{{cliente.domicilio}}</td>
+                        <td>{{getClienteTipoDescripcion(cliente.id_tipoCliente)}}</td>
+                        <td>{{cliente.historial_cliente}}</td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+            </div>
+        </div>
+    </div>
+    </div>
+</div>

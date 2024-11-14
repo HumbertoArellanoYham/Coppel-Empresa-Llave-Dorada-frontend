@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-panelopera',
@@ -10,4 +11,19 @@ import { Component } from '@angular/core';
 
 export class PaneloperaComponent {
 
+  constructor(private router: Router){
+
+  }
+
+  clientespage(){
+    this.router.navigate(['/operativo/paneloperativo/clientes']);
+  }
+
+  productospage(){
+    this.router.navigate(['/operativo/paneloperativo/productos']);
+  }
+
+  ventaspage(){
+    this.router.navigate(['/operativo/paneloperativo/ventas']);
+  }
 }
