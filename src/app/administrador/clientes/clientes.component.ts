@@ -19,9 +19,7 @@ import { TipoclienteserviceService } from '../../core/services/tipoclienteservic
 })
 export class ClientesComponent implements OnInit{
   f: Date = new Date();
-
   clientes: Cliente[] = [];
-
   tipocliente: TipoCliente[] = [];
 
   ngOnInit(): void {
@@ -35,23 +33,20 @@ export class ClientesComponent implements OnInit{
       @Inject(TipoclienteserviceService) private tipoclienteservice: TipoclienteserviceService 
   ){}
 
-  @Input() cliente: Cliente = {
-    id_cliente: 0,
+  cliente = {
+    id_cliente: '',
     nombre: '',
     apellidoPaterno: '',
     apellidoMaterno: '',
-    fecha_nacimiento: new Date,
+    fecha_nacimiento: '',
     domicilio: '',
-    id_tipoCliente: 0,
-    historial_cliente: 0,
+    id_tipoCliente: '',
+    historial_cliente: '',
   }
 
   selectedclientstype = '';
 
   onSubmit(clienteForm: NgForm): void {
-    if(clienteForm.valid){
-    }
-    
     this.clean(clienteForm);
     this.resetTheForm(clienteForm);
   }
@@ -62,8 +57,6 @@ export class ClientesComponent implements OnInit{
   }
 
   clean(clienteForm: NgForm): void {
-      this.cliente = new Cliente();
-
       this.resetTheForm(clienteForm);
   }
 
@@ -91,5 +84,10 @@ export class ClientesComponent implements OnInit{
     const tipoCliente = this.tipocliente.find(tc => tc.id_tipoCliente === id);
     return tipoCliente ? tipoCliente.des_tipoCliente : 'No disponible';
   }
-  
+
+  // Obtener el id del tipo de cliente seleccionado
+  getIdTipoDescripcion(clientstype: string): number {
+    const idTipoCliente = this.tipocliente.find(id => id.des_tipoCliente === clientstype);
+    return idTipoCliente ? idTipoCliente.id_tipoCliente : 1; 
+  }  
 }
