@@ -1,4 +1,5 @@
-import {AfterViewInit, Component, ViewChild } from '@angular/core';
+import {ChangeDetectionStrategy, AfterViewInit, Component, ViewChild, signal  } from '@angular/core';
+
 import {ReactiveFormsModule, FormGroup, FormControl} from '@angular/forms';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
@@ -16,7 +17,7 @@ import {MatCardModule} from '@angular/material/card';
 import {MatSelectModule} from '@angular/material/select';
 
 @Component({
-  selector: 'app-productos',
+  selector: 'app-usuarios',
   standalone: true,
   imports: [ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatIconModule, MatCardModule,
     MatButtonModule,
@@ -24,19 +25,19 @@ import {MatSelectModule} from '@angular/material/select';
     MatSelectModule,
     MatTableModule, MatPaginatorModule,
     MatPaginator,
-    MatMenuModule
-  ],
-  templateUrl: './productos.component.html',
-  styleUrl: './productos.component.css',
-  host: {'some-binding': 'some-value'}
+    MatMenuModule],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+  templateUrl: './usuarios.component.html',
+  styleUrl: './usuarios.component.css'
 })
-export class ProductosComponent implements AfterViewInit{
-  displayedColumns: string[] = ['num', 'producto', 'precio', 'existencia', 'registro', 'categoria'];
-  dataSource:MatTableDataSource<ProductsElement>;
+export class UsuariosComponent implements AfterViewInit{
+  displayedColumns: string[] = ['num', 'nombre', 'apellidoPaterno', 'apellidoMaterno', 'fecha_registro', 'tipo_usuario', 'clave'];
+  dataSource:MatTableDataSource<UsuariosElement>;
 
   constructor(private router: Router){
-    this.dataSource = new MatTableDataSource<ProductsElement>(DATA);
+    this.dataSource = new MatTableDataSource<UsuariosElement>(DATA);
   }
+
 
   @ViewChild(MatPaginator) paginator!: MatPaginator ;
 
@@ -45,7 +46,17 @@ export class ProductosComponent implements AfterViewInit{
     this.dataSource.paginator = this.paginator;
   }
 
-  productoForm = new FormGroup({
+
+  //Password
+  hide = signal(true);
+
+  clickEvent(event: MouseEvent) {
+    this.hide.set(!this.hide());
+    event.stopPropagation();
+  }
+
+  //Formulario
+  usuarioForm = new FormGroup({
 
   });
 
@@ -54,8 +65,8 @@ export class ProductosComponent implements AfterViewInit{
     this.router.navigate(['/paneladmin/clientes']);
   }
 
-  goUsuarios(){
-    this.router.navigate(['/paneladmin/usuarios']);
+  goProductos(){
+    this.router.navigate(['/paneladmin/productos']);
   }
 
   goVentas(){
@@ -64,22 +75,24 @@ export class ProductosComponent implements AfterViewInit{
 
 }
 
-export interface ProductsElement {
+export interface UsuariosElement {
   num: number;
-  producto: string;
-  precio: number;
-  existencia: number;
-  registro: string;
-  categoria: string;
+  nombre: string;
+  apellidoPaterno: string;
+  apellidoMaterno: string;
+  fecha_registro: string;
+  tipo_usuario: string;
+  clave: string;
 }
 
-const DATA: ProductsElement[] = [
+const DATA: UsuariosElement[] = [
   {
     num: 1,
-    producto: 'Iphone',
-    precio: 1324.23,
-    existencia: 4,
-    registro: '20-11-2024',
-    categoria: 'Celulares'
-  },
+    nombre: 'Humberto',
+    apellidoPaterno: 'Arellano',
+    apellidoMaterno: 'Montoya',
+    fecha_registro: '20-11-2024', 
+    tipo_usuario: 'Administrador',
+    clave: 'admin'
+  }
 ];

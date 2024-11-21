@@ -24,4 +24,8 @@ export class PaneladminComponent {
   ventaspage(){
     this.router.navigate(['/paneladmin/ventas']);
   }
+
+  usuariospage(){
+    this.router.navigate(['/paneladmin/usuarios']);
+  }
 }

@@ -1,7 +1,9 @@
-<div class="container">
-    <nav class="navbar navbar-expand-lg bg-warning">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="#">Llave Dorada</a>
+  <nav class="navbar navbar-expand-lg bg-warning">
+    <div class="container-fluid">
+      <a [routerLink]="['/admin']" routerLinkActive="router-link-active"  class="navbar-brand titulo">Llave Dorada</a>
+      <div>
+        <button mat-raised-button class="button" (click)="paneladmin()">Administrador</button>
+        <button mat-raised-button (click)="paneloperativo()">Operativo</button>
       </div>
-    </nav>
-</div>
+    </div>
+  </nav>

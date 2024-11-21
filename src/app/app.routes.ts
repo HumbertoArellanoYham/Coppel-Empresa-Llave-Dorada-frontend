@@ -7,9 +7,10 @@ import { PaneladminComponent } from './administrador/paneladmin/paneladmin.compo
 import { ClientesComponent as ClientesAdminComponent } from './administrador/clientes/clientes.component';
 import { ProductosComponent as ProductosAdminComponent} from './administrador/productos/productos.component';
 import { VentasComponent as VentasAdminComponent} from './administrador/ventas/ventas.component';
+import { UsuariosComponent as UsuariosAdminComponent} from './administrador/usuarios/usuarios.component';
 
 
-import { PaneloperaComponent } from './operativo/panelopera/panelopera.component';
+import { PaneloperaComponent } from './operativo/panelopera.component';
 
 import { ClientesComponent as ClientesOperaComponent } from './operativo/clientes/clientes.component';
 import { ProductosComponent as ProductosOperaComponent } from './operativo/productos/productos.component';
@@ -20,6 +21,7 @@ export const routes: Routes = [
     {path: '', redirectTo: 'admin', pathMatch: 'full'},
     {path: 'admin', component: AdministradorComponent},
     {path: 'paneladmin', component: PaneladminComponent},
+    {path: 'paneladmin/usuarios', component: UsuariosAdminComponent},
     {path: 'paneladmin/clientes', component: ClientesAdminComponent},
     {path: 'paneladmin/productos', component: ProductosAdminComponent},
     {path: 'paneladmin/ventas', component: VentasAdminComponent},

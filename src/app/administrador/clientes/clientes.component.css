@@ -10,30 +10,20 @@ width: 40%;
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items:stretch;
     height: 100vh; 
 }
-.tabladatos {
-    display: flex;
-    justify-content: center; /* Centra el contenido horizontalmente */
-    align-items: center; /* Alinea el contenido verticalmente (si es necesario) */
-    width: 100%;
+
+.cleanboton {
+    margin-right: 2px;
 }
 
-.tabladatos .container {
-    max-width: 80%; /* Ajusta el ancho máximo de la tabla */
+.navclientes > h3 {
+    margin-top: 10px;
+    text-align: center;
+    margin-bottom: 30px;
 }
 
-
-.tabladatos th, .tabladatos td {
-    text-align: center; /* Centra el texto en celdas */
-    vertical-align: middle; /* Centra el texto verticalmente */
-    padding: 12px; /* Espaciado en celdas */
-}
-
-
-
-.tabladatos .alert-info {
-    text-align: center; /* Centra el texto en la alerta */
-    margin-top: 15px; /* Espacio superior para la alerta */
+.tablaclientes {
+   width: 55%;
 }

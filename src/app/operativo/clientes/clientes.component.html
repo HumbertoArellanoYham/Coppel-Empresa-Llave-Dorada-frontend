@@ -1,1 +1,39 @@
-<p>clientes works!</p>
+<h3>Listado de clientes</h3>
+<div class="container tabladatos">
+        <div class="container mt-1">
+                <div class="col w-40 p-3">
+                </div>
+                <div class="col w-40">
+                    <div class="table-responsive" style="overflow-y: auto;">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>Num</th>
+                                <th>Nombre</th>
+                                <th>Apellido Paterno</th>
+                                <th>Apellido Materno</th>
+                                <th>Fecha nacimiento</th>
+                                <th>Domicilio</th>
+                                <th>Tipo cliente</th>
+                                <th>Historial</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @for(cliente of clientes; track $index){
+                            <tr>
+                                <td>{{cliente.id_cliente}}</td>
+                                <td>{{cliente.nombre}}</td>
+                                <td>{{cliente.apellidoPaterno}}</td>
+                                <td>{{cliente.apellidoMaterno}}</td>
+                                <td>{{cliente.fecha_nacimiento}}</td>
+                                <td>{{cliente.domicilio}}</td>
+                                <td>{{getClienteTipoDescripcion(cliente.id_tipoCliente)}}</td>
+                                <td>{{cliente.historial_cliente}}</td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+                    </div>
+                </div>
+            </div>
+    </div>

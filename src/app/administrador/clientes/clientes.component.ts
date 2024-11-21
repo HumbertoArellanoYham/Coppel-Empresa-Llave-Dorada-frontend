@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Output, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Output, Input, OnInit} from '@angular/core';
+import { Router } from '@angular/router';
 import { Cliente } from '../../core/interfaces/datoscliente/cliente';
 import { TipoCliente } from '../../core/interfaces/datoscliente/tipocliente';
 import { FormsModule, NgForm } from '@angular/forms';
@@ -6,6 +7,9 @@ import { CommonModule } from '@angular/common';
 import { Inject } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
 import { lastValueFrom } from 'rxjs';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
 
 import { ClienteServiceService } from '../../core/services/clienteservice/cliente-service.service'
 import { TipoclienteserviceService } from '../../core/services/tipoclienteservice/tipoclienteservice.service'
@@ -13,7 +17,7 @@ import { TipoclienteserviceService } from '../../core/services/tipoclienteservic
 @Component({
   selector: 'app-clientes',
   standalone: true,
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, MatButtonModule, MatMenuModule,  MatIconModule],
   templateUrl: './clientes.component.html',
   styleUrl: './clientes.component.css'
 })
@@ -30,7 +34,8 @@ export class ClientesComponent implements OnInit{
   }
 
   constructor(@Inject(ClienteServiceService) private clienteservice: ClienteServiceService,
-      @Inject(TipoclienteserviceService) private tipoclienteservice: TipoclienteserviceService 
+      @Inject(TipoclienteserviceService) private tipoclienteservice: TipoclienteserviceService,
+      private router: Router
   ){}
 
   cliente = {
@@ -90,4 +95,18 @@ export class ClientesComponent implements OnInit{
     const idTipoCliente = this.tipocliente.find(id => id.des_tipoCliente === clientstype);
     return idTipoCliente ? idTipoCliente.id_tipoCliente : 1; 
   }  
+
+  // Routes
+  goProduct(){
+    this.router.navigate(['/paneladmin/productos']);
+  }
+
+  goUsuarios(){
+    this.router.navigate(['/paneladmin/usuarios']);
+  }
+
+  goVentas(){
+    this.router.navigate(['/paneladmin/ventas']);
+  }
+
 }

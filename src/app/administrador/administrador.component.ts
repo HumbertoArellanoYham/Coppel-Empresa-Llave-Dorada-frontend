@@ -7,10 +7,12 @@ import { ReactiveFormsModule, FormControl, FormGroup,
 import { LoginService } from '../core/services/loginvalidator/login.service';
 import { Inject } from '@angular/core';
 
+import {MatDividerModule} from '@angular/material/divider';
+
 @Component({
   selector: 'app-administrador',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, MatDividerModule],
   templateUrl: './administrador.component.html',
   styleUrl: './administrador.component.css'
 })
